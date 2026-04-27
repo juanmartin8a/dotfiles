@@ -1,0 +1,13 @@
+theme = dark:everforest_dark_hard,light:everforest_light_hard
+
+window-inherit-font-size = false
+
+font-family = andale mono 
+font-size = 18
+
+adjust-cell-height = 25% 
+
+shell-integration-features = no-cursor
+cursor-style = block 
+cursor-style-blink = true
+cursor-invert-fg-bg = false

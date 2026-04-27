@@ -3,8 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 -- Cursor
--- vim.opt.guicursor = "n-v-c:block,i:block"
-vim.opt.guicursor = "n-v-c:block,i:block-blinkwait300-blinkon200-blinkoff150"
+vim.opt.guicursor = "n-v-c:block,i:block-blinkwait0-blinkon200-blinkoff150"
 
 -- Line numbers / UI
 vim.opt.number = true
@@ -24,6 +23,8 @@ vim.opt.writebackup = true
 
 vim.opt.swapfile = true
 vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.undoreload = 10000
 
 -- External file changes
 vim.opt.autoread = true
@@ -79,4 +80,3 @@ require('config.colorscheme')
 require('config.lsp')
 require('config.treesitter')
 require('config.mini')
-

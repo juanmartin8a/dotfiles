@@ -74,9 +74,15 @@ vim.pack.add {
     "https://github.com/nvim-mini/mini.nvim",
     "https://github.com/nvim-treesitter/nvim-treesitter",
     "https://github.com/sainnhe/everforest",
+    "https://github.com/christoomey/vim-tmux-navigator"
 }
 
 require('config.colorscheme')
 require('config.lsp')
 require('config.treesitter')
 require('config.mini')
+
+vim.keymap.set('n', '<C-h>', '<cmd>TmuxNavigateLeft<CR>')
+vim.keymap.set('n', '<C-j>', '<cmd>TmuxNavigateDown<CR>')
+vim.keymap.set('n', '<C-k>', '<cmd>TmuxNavigateUp<CR>')
+vim.keymap.set('n', '<C-l>', '<cmd>TmuxNavigateRight<CR>')

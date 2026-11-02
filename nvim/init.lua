@@ -21,7 +21,7 @@ vim.opt.sidescrolloff = 8
 vim.opt.backup = false
 vim.opt.writebackup = true
 
-vim.opt.swapfile = true
+vim.opt.swapfile = false 
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.undoreload = 10000
@@ -73,14 +73,19 @@ vim.pack.add {
     "https://github.com/mason-org/mason-lspconfig.nvim",
     "https://github.com/nvim-mini/mini.nvim",
     "https://github.com/nvim-treesitter/nvim-treesitter",
-    "https://github.com/sainnhe/everforest",
-    "https://github.com/christoomey/vim-tmux-navigator"
+    -- "https://github.com/sainnhe/everforest",
+    { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
+    { src = "https://github.com/thesimonho/kanagawa-paper", version = "neovim" },
+    -- "https://github.com/savq/melange-nvim",
+    "https://github.com/christoomey/vim-tmux-navigator",
+    "https://github.com/folke/snacks.nvim"
 }
 
 require('config.colorscheme')
 require('config.lsp')
 require('config.treesitter')
 require('config.mini')
+require('config.snacks')
 
 vim.keymap.set('n', '<C-h>', '<cmd>TmuxNavigateLeft<CR>')
 vim.keymap.set('n', '<C-j>', '<cmd>TmuxNavigateDown<CR>')

@@ -28,11 +28,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
         -- Diagnostics (navigation)
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+        vim.keymap.set("n", "[d", function()
+            vim.diagnostic.jump({ count = -vim.v.count1 })
+        end, opts)
+        vim.keymap.set("n", "]d", function()
+            vim.diagnostic.jump({ count = vim.v.count1 })
+        end, opts)
 
         -- Diagnostics (view)
-        vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+        vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
         vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
         -- Formatting (optional, async)
@@ -41,3 +45,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, opts)
     end,
 })
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                globals = { "vim" },
+            },
+            workspace = {
+                library = { vim.env.VIMRUNTIME },
+                checkThirdParty = false,
+            },
+        },
+    },
+})
+
+vim.lsp.enable("lua_ls")

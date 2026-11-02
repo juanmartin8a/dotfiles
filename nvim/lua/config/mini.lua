@@ -1,12 +1,17 @@
-require("mini.pick").setup()
-
 require("mini.surround").setup()
 
 require("mini.completion").setup()
 
-require("mini.pairs").setup()
+-- disable autocomplete on snacks picker
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("DisableSnacksCompletion", { clear = true }),
+    pattern = "snacks_picker_input",
+    callback = function(event)
+        vim.b[event.buf].minicompletion_disable = true
+    end,
+})
 
-require("mini.files").setup()
+require("mini.pairs").setup()
 
 require("mini.ai").setup()
 
@@ -26,27 +31,14 @@ require("mini.move").setup({
     },
 })
 
-
 -- keymaps
 
-vim.keymap.set('n', '<leader>ff', function()
-    require('mini.pick').builtin.files()
-end)
-
-vim.keymap.set('n', '<leader>fg', function()
-    require('mini.pick').builtin.grep()
-end)
-
-vim.keymap.set('n', '<leader>fb', function()
-    require('mini.pick').builtin.buffer()
-end)
-
-vim.keymap.set('n', '<leader>-', function()
-    local mf = require('mini.files')
-
-    if vim.bo.filetype == 'minifiles' then
-        mf.close()
-    else
-        mf.open(vim.api.nvim_buf_get_name(0))
-    end
-end)
+-- vim.keymap.set('n', '<leader>-', function()
+--     local mf = require('mini.files')
+--
+--     if vim.bo.filetype == 'minifiles' then
+--         mf.close()
+--     else
+--         mf.open(vim.api.nvim_buf_get_name(0))
+--     end
+-- end)
